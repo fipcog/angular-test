@@ -1,5 +1,13 @@
-<ul>
+<!-- <ul>
   <li *ngFor="let fr of fruits; even as e" [ngClass]="e ? 'green' : 'red'">
     {{fr.name}}
   </li>
+</ul> -->
+
+<ul>
+  <ng-container *ngFor="let fr of fruits">
+    <li *ngIf="fr.price > 7">
+      {{fr.name}}
+    </li>
+  </ng-container>
 </ul>
