@@ -7,7 +7,7 @@
 <ul>
   <ng-container *ngFor="let fr of fruits">
     <li *ngIf="fr.price > 7" [ngStyle]="{color: fr.price > 15 ? 'green' : 'red'}">
-      {{fr.name}}
+      {{fr.name |  lowercase}}
     </li>
   </ng-container>
 </ul>
