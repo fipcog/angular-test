@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let fr of fruits; even as e" [ngClass]="e ? 'green' : 'red'">
+    {{fr.name}}
+  </li>
+</ul>
