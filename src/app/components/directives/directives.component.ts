@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TestService } from '../../services/Test.service';
 
 interface Fruit {
   id: number
@@ -29,5 +30,14 @@ export class DirectivesComponent {
     { id: 8, name: 'mangoes', price: 3 },
     { id: 9, name: 'kiwifruit', price: 7 },
   ]
+  value: number = 0
+  constructor(private testSetvice: TestService) { }
 
+  ngOnInit() {
+    this.value = this.testSetvice.value$.value
+  }
+
+  setValue = (val: number) => {
+    this.testSetvice.setValue(val)
+  }
 }
