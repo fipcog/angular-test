@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TestService {
-  value$ = new BehaviorSubject<number>(0)
+  value$: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
   setValue = (val: number) => {
     this.value$.next(val)

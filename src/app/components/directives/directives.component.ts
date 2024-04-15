@@ -34,10 +34,12 @@ export class DirectivesComponent {
   constructor(private testSetvice: TestService) { }
 
   ngOnInit() {
-    this.value = this.testSetvice.value$.value
+    this.testSetvice.value$.subscribe((val: number) => {
+      this.value = val
+    })
   }
 
-  setValue = (val: number) => {
-    this.testSetvice.setValue(val)
+  setValueHandler = (e: Event) => {
+    this.testSetvice.setValue(+(e.currentTarget as HTMLInputElement).value)
   }
 }
