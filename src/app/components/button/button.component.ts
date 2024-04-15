@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -12,5 +12,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
-  data = 'string'
+  @Input() name: string = 'button'
+  @Output() clickReactEmitter = new EventEmitter()
+
+  clickHandler = () => {
+    this.clickReactEmitter.emit()
+  }
 }

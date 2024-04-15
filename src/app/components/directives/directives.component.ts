@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestService } from '../../services/Test.service';
+import { ButtonComponent } from '../button/button.component';
+import { FormsModule } from '@angular/forms';
 
 interface Fruit {
   id: number
@@ -13,6 +15,8 @@ interface Fruit {
   standalone: true,
   imports: [
     CommonModule,
+    ButtonComponent,
+    FormsModule
   ],
   templateUrl: './directives.component.html',
   styleUrl: './directives.component.css',
@@ -30,7 +34,10 @@ export class DirectivesComponent {
     { id: 8, name: 'mangoes', price: 3 },
     { id: 9, name: 'kiwifruit', price: 7 },
   ]
+
   value: number = 0
+  str: string = ''
+
   constructor(private testSetvice: TestService) { }
 
   ngOnInit() {
@@ -41,5 +48,9 @@ export class DirectivesComponent {
 
   setValueHandler = (e: Event) => {
     this.testSetvice.setValue(+(e.currentTarget as HTMLInputElement).value)
+  }
+
+  buttonClickHandler = () => {
+    alert("click")
   }
 }
