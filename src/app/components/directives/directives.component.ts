@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestService } from '../../services/Test.service';
 import { ButtonComponent } from '../button/button.component';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 interface Fruit {
   id: number
@@ -35,15 +36,17 @@ export class DirectivesComponent {
     { id: 9, name: 'kiwifruit', price: 7 },
   ]
 
-  value$: number = 0
+  value$ = new Observable()
+  // value$: number = 0
   str: string = ''
 
   constructor(private testSetvice: TestService) { }
 
   ngOnInit() {
-    this.testSetvice.value$.subscribe((val: number) => {
-      this.value$ = val
-    })
+    this.value$ = this.testSetvice.value$
+    // this.testSetvice.value$.subscribe((val: number) => {
+    //   this.value$ = val
+    // })
   }
 
   setValueHandler = (e: Event) => {
