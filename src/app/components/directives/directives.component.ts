@@ -35,14 +35,14 @@ export class DirectivesComponent {
     { id: 9, name: 'kiwifruit', price: 7 },
   ]
 
-  value: number = 0
+  value$: number = 0
   str: string = ''
 
   constructor(private testSetvice: TestService) { }
 
   ngOnInit() {
     this.testSetvice.value$.subscribe((val: number) => {
-      this.value = val
+      this.value$ = val
     })
   }
 

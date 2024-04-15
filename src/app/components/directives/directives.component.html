@@ -13,9 +13,9 @@
 </ul> -->
 
 <div>
-    <h6>{{value}}</h6>
+    <h6>{{value$}}</h6>
     <input type="number" (input)="setValueHandler($event)"/>
-    <app-button [name]="('' + value)" (clickReactEmitter)="buttonClickHandler()"/>
+    <app-button [name]="('' + value$)" (clickReactEmitter)="buttonClickHandler()"/>
 </div>
 <hr/>
 <div>
