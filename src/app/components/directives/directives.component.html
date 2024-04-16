@@ -15,7 +15,7 @@
 <div>
     <h6>{{value$ | async}}</h6>
     <input type="number" (input)="setValueHandler($event)"/>
-    <app-button [name]="('' + (value$ | async))" (clickReactEmitter)="buttonClickHandler()"/>
+    <!-- <app-button [name]="('' + (value$ | async))" (clickReactEmitter)="buttonClickHandler()"/> -->
 </div>
 <hr/>
 <div>

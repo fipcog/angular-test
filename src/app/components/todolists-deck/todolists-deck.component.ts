@@ -31,8 +31,10 @@ export class TodolistsDeckComponent {
 
   getTodos() {
     this.todolistApi.getTodos()
-      .subscribe((res) => {
-        this.todolists = [...res]
+      .subscribe({
+        next: (res) => {
+          this.todolists = [...res]
+        },
       })
   }
 
