@@ -1,5 +1,8 @@
 <ul>
-  <li *ngFor="let list of todolists">
-    <span>{{list.title}}</span>
+  <li *ngFor="let td of todolists">
+    <article>
+      <h3>{{td.title}}</h3>
+      <button (click)="deleteTodo(td.id)">X</button>
+    </article>
   </li>
 </ul>

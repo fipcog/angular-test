@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TestService } from '../../services/Test.service';
-import { ButtonComponent } from '../button/button.component';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -16,7 +15,6 @@ interface Fruit {
   standalone: true,
   imports: [
     CommonModule,
-    ButtonComponent,
     FormsModule
   ],
   templateUrl: './directives.component.html',
