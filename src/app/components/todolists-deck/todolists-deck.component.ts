@@ -36,5 +36,4 @@ export class TodolistsDeckComponent {
       console.log(this.todolists)
     })
   }
-
 }
