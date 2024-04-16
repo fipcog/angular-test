@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let td of todolists">
+  <li *ngFor="let td of todolists$ | async">
     <article>
       <h3>{{td.title}}</h3>
       <button (click)="deleteTodo(td.id)">X</button>
