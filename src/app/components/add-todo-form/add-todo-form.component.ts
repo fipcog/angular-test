@@ -22,6 +22,8 @@ export class AddTodoFormComponent {
 
   createNewTodo() {
     this.todolistApi.createTodo(this.newTodoTitle)
-      .subscribe()
+    // .subscribe((res) => {
+    //   this.todolists = [res.data.item, ...this.todolists]
+    // })
   }
 }

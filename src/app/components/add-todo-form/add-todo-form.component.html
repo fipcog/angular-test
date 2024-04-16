@@ -1,3 +1,4 @@
-<form (submit)="createTodo()"> 
-  <!-- <input type="text" maxlength="30" placeholder="New todolist title"  [()]"createNewTodo()"> -->
+<form (submit)="createNewTodo()"> 
+  <input type="text" maxlength="30" placeholder="New todolist title" [(ngModel)]="newTodoTitle">
+  <button>CREATE</button>
 </form>
