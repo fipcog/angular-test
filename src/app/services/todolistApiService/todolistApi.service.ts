@@ -50,6 +50,7 @@ export class TodolistApiService {
           td => td.id === todoId ? { ...td, title } : td
         )
       }))
+      .subscribe(todos => this.todolists$.next(todos))
   }
 
   deleteTodo(todoId: string) {
