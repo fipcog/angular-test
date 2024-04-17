@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseResponse, Todolist } from './todolistApiInterfaces';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, catchError, map } from 'rxjs';
+import { CatchErrorUtil } from '../../utils/catchErrorUtil';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,9 @@ export class TodolistApiService {
       'https://social-network.samuraijs.com/api/1.1/todo-lists',
       this.options
     )
+      .pipe(
+        catchError(CatchErrorUtil)
+      )
       .subscribe((res) => {
         this.todolists$.next(res)
       })
@@ -32,6 +36,9 @@ export class TodolistApiService {
       { title },
       this.options
     )
+      .pipe(
+        catchError(CatchErrorUtil)
+      )
       .pipe(map(res => {
         const newTodo = res.data.item
         const storeTodos = this.todolists$.getValue()
@@ -45,6 +52,9 @@ export class TodolistApiService {
       `https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`,
       { title },
       this.options)
+      .pipe(
+        catchError(CatchErrorUtil)
+      )
       .pipe(map(res => {
         return this.todolists$.getValue().map(
           td => td.id === todoId ? { ...td, title } : td
@@ -58,6 +68,9 @@ export class TodolistApiService {
       `https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`,
       this.options
     )
+      .pipe(
+        catchError(CatchErrorUtil)
+      )
       .pipe(map(() => {
         const storeTodos = this.todolists$.getValue()
         return storeTodos.filter(td => td.id !== todoId)
