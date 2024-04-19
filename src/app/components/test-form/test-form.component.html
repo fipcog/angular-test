@@ -1,17 +1,67 @@
 <form [formGroup]="testForm" (ngSubmit)="submitHandler()">
   <h4>User Data</h4>
-  <input type="text" placeholder="name" formControlName="name"/>
-  <input type="text" placeholder="surname" formControlName="surname"/>
-  <input type="text" placeholder="nickname" formControlName="nickname"/>  
+  <div>
+    <input type="text" placeholder="name" formControlName="name"/>
+    <div *ngIf="isFieldInvalid('name')">
+      <span *ngIf="checkFieldOnError('name', 'minlength')">Min length</span>
+      <span *ngIf="checkFieldOnError('name', 'maxlength')">Max length</span>
+    </div>
+  </div>
+  <div>
+    <input type="text" placeholder="surname" formControlName="surname"/>
+    <div *ngIf="isFieldInvalid('surname')">
+      <span *ngIf="checkFieldOnError('surname', 'minlength')">Min length</span>
+      <span *ngIf="checkFieldOnError('surname', 'maxlength')">Max length</span>
+    </div>
+  </div>
+  <div>
+    <input type="text" placeholder="nickname" formControlName="nickname"/>
+    <div *ngIf="isFieldInvalid('nickname')">
+      <span *ngIf="checkFieldOnError('nickname', 'minlength')">Min length</span>
+      <span *ngIf="checkFieldOnError('nickname', 'maxlength')">Max length</span>
+    </div>
+  </div>
+  <div>
+    <input type="email" placeholder="email" formControlName="email"/>
+    <div *ngIf="isFieldInvalid('email')">
+      <span *ngIf="checkFieldOnError('email', 'pattern')">Email invalid</span>
+      <span *ngIf="checkFieldOnError('email', 'required')">Field is required</span>
+    </div>
+  </div>
+
   <div formGroupName="address">
     <h4>Address</h4>
-    <input type="text" placeholder="city" formControlName="city"/>  
-    <input type="text" placeholder="street" formControlName="street"/>  
+    <div>
+      <input type="text" placeholder="city" formControlName="city"/>
+      <div *ngIf="testForm.get('address')?.get('city')">
+        <span *ngIf="testForm.get('address')?.get('city')?.errors?.['maxlength']">Max length</span>
+      </div>
+    </div>
+    <div>
+      <input type="text" placeholder="street" formControlName="street"/>
+      <div *ngIf="testForm.get('address')?.get('street')">
+        <span *ngIf="testForm.get('address')?.get('street')?.errors?.['maxlength']">Max length</span>
+      </div>
+    </div>
   </div>
+
   <div formGroupName="additional">
     <h4>Additional</h4>
-    <input type="text" placeholder="age" formControlName="age"/>  
-    <input type="text" placeholder="birthday" formControlName="birthday"/>  
+    <div>
+      <input type="number" placeholder="age" formControlName="age"/>
+      <div *ngIf="testForm.get('additional')?.get('age')">
+        <span *ngIf="testForm.get('additional')?.get('age')?.errors?.['min']">Min num</span>
+      </div>
+    </div>
+    <div>
+      <input type="date" placeholder="birthday" formControlName="birthday"/>
+      <div *ngIf="testForm.get('additional')?.get('birthday')">
+        <span *ngIf="testForm.get('additional')?.get('birthday')?.errors?.['required']">Required</span>
+      </div>
+    </div>
   </div>
-  <button type="submit">Submit</button>
+
+  <button [disabled]="testForm.invalid" type="submit">Submit</button>
 </form>
+
+<button (click)="updateDefault()">Update</button>
