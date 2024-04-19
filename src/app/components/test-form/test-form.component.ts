@@ -26,9 +26,13 @@ export class TestFormComponent {
         street: new FormControl('')
       }),
       additional: new FormGroup({
-        age: new FormControl('18'),
+        age: new FormControl(''),
         birthday: new FormControl('')
       })
+    })
+
+    this.testForm.get('additional')?.patchValue({
+      age: '18'
     })
   }
 }
