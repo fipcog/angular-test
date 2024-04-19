@@ -1,9 +1,17 @@
-<form [formGroup]="testForm">
+<form [formGroup]="testForm" (ngSubmit)="submitHandler()">
+  <h4>User Data</h4>
   <input type="text" placeholder="name" formControlName="name"/>
   <input type="text" placeholder="surname" formControlName="surname"/>
   <input type="text" placeholder="nickname" formControlName="nickname"/>  
-  <input type="text" placeholder="city" formControlName="city"/>  
-  <input type="text" placeholder="street" formControlName="street"/>  
-  <input type="text" placeholder="age" formControlName="age"/>  
-  <input type="text" placeholder="birthday" formControlName="birthday"/>  
+  <div formGroupName="address">
+    <h4>Address</h4>
+    <input type="text" placeholder="city" formControlName="city"/>  
+    <input type="text" placeholder="street" formControlName="street"/>  
+  </div>
+  <div formGroupName="additional">
+    <h4>Additional</h4>
+    <input type="text" placeholder="age" formControlName="age"/>  
+    <input type="text" placeholder="birthday" formControlName="birthday"/>  
+  </div>
+  <button type="submit">Submit</button>
 </form>

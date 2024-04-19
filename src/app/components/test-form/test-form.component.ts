@@ -31,8 +31,14 @@ export class TestFormComponent {
       })
     })
 
-    this.testForm.get('additional')?.patchValue({
-      age: '18'
+    this.testForm.patchValue({
+      address: {
+        age: '18'
+      }
     })
+  }
+
+  submitHandler() {
+    console.log(this.testForm)
   }
 }
