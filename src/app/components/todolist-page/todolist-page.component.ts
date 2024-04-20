@@ -24,7 +24,9 @@ export class TodolistPageComponent {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('todoId') ?? 'default'
-    this.title = this.route.snapshot.queryParamMap.get('title') ?? 'default'
+    if (this.route.snapshot.queryParamMap.get('title')) {
+      this.title = this.route.snapshot.queryParamMap.get('title') ?? 'default'
+    }
   }
 
   navigateToDeck() {
