@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'directives', component: DirectivesComponent },
   { path: 'test-form', component: TestFormComponent },
   { path: 'todolist-deck', component: TodolistsDeckComponent },
-  { path: 'todolist-page/todoId', component: TodolistPageComponent },
+  { path: 'todolist-page/:todoId', component: TodolistPageComponent },
   { path: '404', component: Page404Component },
   { path: '**', redirectTo: '404' }
 ];
