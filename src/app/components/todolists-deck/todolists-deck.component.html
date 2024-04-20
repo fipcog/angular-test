@@ -1,7 +1,7 @@
 <ul>
   <li *ngFor="let td of todolists$ | async">
     <article>
-      <h3>{{td.title}}</h3>
+      <h3><a [routerLink]="['todolist-page', td.id]" [queryParams]="{title: td.title}">{{td.title}}</a></h3>
       <button (click)="deleteTodo(td.id)">X</button>
     </article>
   </li>

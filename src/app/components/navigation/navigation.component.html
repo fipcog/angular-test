@@ -1,3 +1,5 @@
 <div>
-  <a></a>
+  <a [routerLink]="['directives']" routerLinkActive="active">directives</a><br>
+  <a [routerLink]="['test-form', {someParam: 'default'}]" routerLinkActive="active">test-form</a>,<br>
+  <a [routerLink]="['todolist-deck']" routerLinkActive="active" [queryParams]="{page: '13', sort: 'up'}">todolist-deck</a>
 </div>

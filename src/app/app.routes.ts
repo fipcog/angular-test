@@ -3,12 +3,14 @@ import { DirectivesComponent } from './components/directives/directives.componen
 import { TestFormComponent } from './components/test-form/test-form.component';
 import { TodolistsDeckComponent } from './components/todolists-deck/todolists-deck.component';
 import { Page404Component } from './components/page404/page404.component';
+import { TodolistPageComponent } from './components/todolist-page/todolist-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'todolist-deck', pathMatch: 'full' },
   { path: 'directives', component: DirectivesComponent },
   { path: 'test-form', component: TestFormComponent },
   { path: 'todolist-deck', component: TodolistsDeckComponent },
+  { path: 'todolist-page/todoId', component: TodolistPageComponent },
   { path: '404', component: Page404Component },
   { path: '**', redirectTo: '404' }
 ];

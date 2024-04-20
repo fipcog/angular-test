@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Todolist } from '../../services/todolistApiService/todolistApiInterfaces';
 import { TodolistApiService } from '../../services/todolistApiService/todolistApi.service';
 import { Observable } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
   ],
   templateUrl: './todolists-deck.component.html',
   styleUrl: './todolists-deck.component.scss',
