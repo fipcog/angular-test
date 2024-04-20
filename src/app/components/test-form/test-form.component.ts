@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test-form',
@@ -15,6 +15,13 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class TestFormComponent {
   testForm!: FormGroup
+  builderForm = this.fb.group({
+    login: ['', Validators.required],
+    password: ['', Validators.required],
+    remember: [false]
+  })
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.testForm = new FormGroup({

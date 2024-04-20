@@ -65,3 +65,10 @@
 </form>
 
 <button (click)="updateDefault()">Update</button>
+
+<form [formGroup]="builderForm">
+  <input type="text" placeholder="login" formControlName="login">
+  <input type="password" placeholder="password" formControlName="password">
+  <label><input type="checkbox" formControlName="remember">Remember Me</label>
+  <button>Submit</button>
+</form>
