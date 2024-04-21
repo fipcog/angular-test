@@ -11,16 +11,11 @@ export class TodolistApiService {
 
   todolists$: BehaviorSubject<Todolist[]> = new BehaviorSubject<Todolist[]>([])
 
-  options = {
-    withCredentials: true
-  }
-
   constructor(private http: HttpClient) { }
 
   getTodos() {
     return this.http.get<Todolist[]>(
-      'https://social-network.samuraijs.com/api/1.1/todo-lists',
-      this.options
+      'https://social-network.samuraijs.com/api/1.1/todo-lists'
     )
       .pipe(
         catchError(CatchErrorUtil)
@@ -33,8 +28,7 @@ export class TodolistApiService {
   createTodo(title: string) {
     return this.http.post<BaseResponse<{ item: Todolist }>>(
       'https://social-network.samuraijs.com/api/1.1/todo-lists',
-      { title },
-      this.options
+      { title }
     )
       .pipe(
         catchError(CatchErrorUtil)
@@ -50,8 +44,8 @@ export class TodolistApiService {
   updateTodo(todoId: string, title: string) {
     return this.http.put(
       `https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`,
-      { title },
-      this.options)
+      { title }
+    )
       .pipe(
         catchError(CatchErrorUtil)
       )
@@ -65,8 +59,7 @@ export class TodolistApiService {
 
   deleteTodo(todoId: string) {
     return this.http.delete<BaseResponse>(
-      `https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`,
-      this.options
+      `https://social-network.samuraijs.com/api/1.1/todo-lists/${todoId}`
     )
       .pipe(
         catchError(CatchErrorUtil)
